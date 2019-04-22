@@ -18,7 +18,7 @@ const votes = [];
 
 function Product(name) {
   this.name = name;
-  this.path = 'img/' + name + '.jpg';
+  this.path = `img/${name}.jpg`;
   this.votes = 0;
   this.views = 0;
   allProducts.push(this);
@@ -37,7 +37,7 @@ function displayPics(){
   }
   console.log(rando);
   // TODO: In a sentence or two, explain why the previous line of code threw an error when we changed the variable declaration from `var to `let`.
-  // the variable let makes the scope of rando to be within the function of displayPics.
+  // the variable let makes the scope of rando to be within the function of displayPics making it inaccessable to the console log in the above line. If we leave it at var it will work otherwise .
   console.log(viewed);
 
   for (let i = 0; i < 3; i++){
@@ -62,7 +62,7 @@ function handleClick(event) {
   for(let i = 0; i < names.length; i++){
     if(event.target.id === allProducts[i].name) {
       allProducts[i].votes += 1;
-      console.log(event.target.id + ' has ' + allProducts[i].votes + ' votes in ' + allProducts[i].views + ' views');
+      console.log(`${event.target.id} has ${allProducts[i].votes} votes in ${allProducts[i].views} views`);
     }
   }
   localStorage.busmall = JSON.stringify(allProducts);
@@ -73,7 +73,7 @@ function handleClick(event) {
 function showList() {
   for(let i = 0; i < allProducts.length; i++) {
     let liEl = document.createElement('li');
-    liEl.textContent = allProducts[i].name + ' has ' + allProducts[i].votes + ' votes in ' + allProducts[i].views + ' views';
+    liEl.textContent = `${allProducts[i].name} has ${allProducts[i].votes} votes in ${allProducts[i].views} views`;
     list.appendChild(liEl);
   }
 }
